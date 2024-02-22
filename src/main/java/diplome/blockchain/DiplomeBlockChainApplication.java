@@ -1,12 +1,13 @@
 package diplome.blockchain;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectDefaultJaegerApplication {
+public class DiplomeBlockChainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProjectDefaultJaegerApplication.class, args);
+        SpringApplication.run(DiplomeBlockChainApplication.class, args);
     }
 
 }
