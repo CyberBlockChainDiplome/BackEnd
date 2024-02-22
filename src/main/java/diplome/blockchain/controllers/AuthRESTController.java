@@ -1,4 +1,5 @@
 package diplome.blockchain.controllers;
+
 import diplome.blockchain.model.Receiver;
 import diplome.blockchain.model.Transmitter;
 import diplome.blockchain.repository.ReceiverRepository;

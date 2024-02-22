@@ -1,8 +1,8 @@
 package diplome.blockchain.controllers;
-import diplome.blockchain.model.Subject;
-import diplome.blockchain.model.Teacher;
+import diplome.blockchain.model.Diploma;
+import diplome.blockchain.model.Transmitter;
 import diplome.blockchain.repository.ReceiverRepository;
-import diplome.blockchain.repository.SubjectRepository;
+import diplome.blockchain.repository.DiplomaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import diplome.blockchain.model.Stage;
 import diplome.blockchain.model.Receiver;
-import diplome.blockchain.model.Subject;
+import diplome.blockchain.model.Diploma;
 import diplome.blockchain.repository.StageRepository;
 
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ public class StageRESTController {
 
     private StageRepository stageRepository;
     private ReceiverRepository receiverRepository;
-    private SubjectRepository subjectRepository;
+    private DiplomaRepository subjectRepository;
     @Autowired
-    public StageRESTController(StageRepository stageRepository, ReceiverRepository receiverRepository, SubjectRepository subjectRepository) {
+    public StageRESTController(StageRepository stageRepository, ReceiverRepository receiverRepository, DiplomaRepository subjectRepository) {
         this.stageRepository = stageRepository;
         this.receiverRepository = receiverRepository;
         this.subjectRepository = subjectRepository;
@@ -77,10 +77,10 @@ public class StageRESTController {
     //@PutMapping("/{id}")
     public ResponseEntity<Stage> updateStage(@RequestBody Stage stage, @PathVariable("id") long id) {
         Receiver receiver = receiverRepository.findById(stage.getReceiver().getId());
-        Subject subject = subjectRepository.findById(stage.getSubject().getId()).orElse(null);
+        Diploma subject = subjectRepository.findById(stage.getDiploma().getId()).orElse(null);
         stage.setId(id);
         stage.setReceiver(receiver);
-        stage.setSubject(subject);
+        stage.setDiploma(subject);
         subjectRepository.save(subject);
         return new ResponseEntity<Stage>(stage,HttpStatus.OK);
     }
