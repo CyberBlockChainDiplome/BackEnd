@@ -1,9 +1,9 @@
 package diplome.blockchain.repository;
 
-import diplome.blockchain.model.Diploma;
+import diplome.blockchain.model.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DiplomaRepository extends JpaRepository<Diploma,Long>{
-    Diploma findById(long id);
+public interface SubjectRepository extends JpaRepository<Subject,Long>{
+    Subject findById(long id);
 
 }

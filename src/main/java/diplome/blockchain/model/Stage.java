@@ -2,8 +2,6 @@ package diplome.blockchain.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 public class Stage {
 
@@ -13,16 +11,16 @@ public class Stage {
     private double value;
 
     @ManyToOne
-    private Diploma diploma;
+    private Subject subject;
     @ManyToOne
     private Receiver receiver;
 
-    public Diploma getDiploma() {
-        return diploma;
+    public Subject getDiploma() {
+        return subject;
     }
 
-    public void setDiploma(Diploma diploma) {
-        this.diploma = diploma;
+    public void setDiploma(Subject subject) {
+        this.subject = subject;
     }
 
     public Receiver getReceiver() {

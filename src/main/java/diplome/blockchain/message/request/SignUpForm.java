@@ -1,6 +1,6 @@
 package diplome.blockchain.message.request;
 
-import diplome.blockchain.model.Diploma;
+import diplome.blockchain.model.Subject;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -23,7 +23,7 @@ public class SignUpForm {
     @NotBlank
     @Size(min=3, max = 60)
     private String email;
-    private List<Diploma> diploma;
+    private List<Subject> subject;
     @NotBlank
     @Size(min=3, max = 60)
     private String telephone;
@@ -41,12 +41,12 @@ public class SignUpForm {
         this.username = username;
     }
 
-    public List<Diploma> getDiploma() {
-        return diploma;
+    public List<Subject> getDiploma() {
+        return subject;
     }
 
-    public void setDiploma(List<Diploma> diploma) {
-        this.diploma = diploma;
+    public void setDiploma(List<Subject> subject) {
+        this.subject = subject;
     }
 
     public Set<String> getRole() {

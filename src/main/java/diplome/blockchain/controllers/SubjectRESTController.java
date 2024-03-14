@@ -17,13 +17,13 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/diplomas")
-public class DiplomaRESTController {
+public class SubjectRESTController {
 
     private SubjectRepository subjectRepository;
 
     private TransmitterRepository transmitterRepository;
     @Autowired
-    public DiplomaRESTController(SubjectRepository subjectRepository, TransmitterRepository transmitterRepository) {
+    public SubjectRESTController(SubjectRepository subjectRepository, TransmitterRepository transmitterRepository) {
         this.subjectRepository = subjectRepository;
         this.transmitterRepository = transmitterRepository;
     }

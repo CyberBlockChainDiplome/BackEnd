@@ -1,7 +1,6 @@
 package diplome.blockchain.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Transmitter {
 
     @JsonBackReference
     @OneToMany(mappedBy = "transmitter", fetch = FetchType.EAGER)
-    private List<Diploma> diplomas;
+    private List<Subject> subjects;
 
     public Transmitter(){
 
@@ -32,12 +31,12 @@ public class Transmitter {
         this.telephone = telephone;
         this.identifier = identifier;
     }
-    public List<Diploma> getDiplomas() {
-        return diplomas;
+    public List<Subject> getDiplomas() {
+        return subjects;
     }
 
-    public void setDiplomas(List<Diploma> diplomas) {
-        this.diplomas = diplomas;
+    public void setDiplomas(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
 

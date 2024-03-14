@@ -1,18 +1,17 @@
 package diplome.blockchain.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Diploma {
+public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String diplomaName;
+    private String subjectName;
 
     public Transmitter getTransmitter() {
         return transmitter;
@@ -23,7 +22,7 @@ public class Diploma {
     }
 
     @JsonBackReference
-    @OneToMany(mappedBy = "diploma", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     private List<Stage> stages;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -37,12 +36,12 @@ public class Diploma {
         this.id = id;
     }
 
-    public String getDiplomaName() {
-        return diplomaName;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setDiplomaName(String diplomaName) {
-        this.diplomaName = diplomaName;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public List<Stage> getStages() {

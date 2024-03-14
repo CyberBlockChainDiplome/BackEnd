@@ -1,8 +1,7 @@
 package diplome.blockchain.controllers;
-import diplome.blockchain.model.Diploma;
-import diplome.blockchain.model.Transmitter;
+import diplome.blockchain.model.Subject;
 import diplome.blockchain.repository.ReceiverRepository;
-import diplome.blockchain.repository.DiplomaRepository;
+import diplome.blockchain.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,10 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import diplome.blockchain.model.Stage;
 import diplome.blockchain.model.Receiver;
-import diplome.blockchain.model.Diploma;
 import diplome.blockchain.repository.StageRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +21,9 @@ public class StageRESTController {
 
     private StageRepository stageRepository;
     private ReceiverRepository receiverRepository;
-    private DiplomaRepository subjectRepository;
+    private SubjectRepository subjectRepository;
     @Autowired
-    public StageRESTController(StageRepository stageRepository, ReceiverRepository receiverRepository, DiplomaRepository subjectRepository) {
+    public StageRESTController(StageRepository stageRepository, ReceiverRepository receiverRepository, SubjectRepository subjectRepository) {
         this.stageRepository = stageRepository;
         this.receiverRepository = receiverRepository;
         this.subjectRepository = subjectRepository;
@@ -77,7 +74,7 @@ public class StageRESTController {
     //@PutMapping("/{id}")
     public ResponseEntity<Stage> updateStage(@RequestBody Stage stage, @PathVariable("id") long id) {
         Receiver receiver = receiverRepository.findById(stage.getReceiver().getId());
-        Diploma subject = subjectRepository.findById(stage.getDiploma().getId()).orElse(null);
+        Subject subject = subjectRepository.findById(stage.getDiploma().getId()).orElse(null);
         stage.setId(id);
         stage.setReceiver(receiver);
         stage.setDiploma(subject);
