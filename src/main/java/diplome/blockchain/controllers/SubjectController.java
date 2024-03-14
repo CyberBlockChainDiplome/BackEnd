@@ -1,6 +1,6 @@
 package diplome.blockchain.controllers;
 
-import diplome.blockchain.model.Diploma;
+import diplome.blockchain.model.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,13 +13,13 @@ public class DiplomaController {
     @RequestMapping("/diploma")
     public String diploma(Model model){
         model.addAttribute("message","Simple String from DiplomaController.");
-        Diploma newDiploma = new Diploma();
-        model.addAttribute("diploma", newDiploma);
+        Subject newSubject = new Subject();
+        model.addAttribute("diploma", newSubject);
         return "diploma";
     }
     @RequestMapping (value = "/addDiploma.html", method = RequestMethod.POST )
-    public String addDiploma(@ModelAttribute("diploma") Diploma diploma){
-        System.out.println(diploma.getDiplomaName());
+    public String addDiploma(@ModelAttribute("diploma") Subject subject){
+        System.out.println(subject.getDiplomaName());
         return "redirect:diploma";
 
     }
