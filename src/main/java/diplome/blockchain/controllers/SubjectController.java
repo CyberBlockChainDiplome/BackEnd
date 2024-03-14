@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class SubjectController {
 
-    @RequestMapping("/diploma")
-    public String diploma(Model model){
-        model.addAttribute("message","Simple String from DiplomaController.");
+    @RequestMapping("/subject")
+    public String subject(Model model){
+        model.addAttribute("message","Simple String from SubjectController.");
         Subject newSubject = new Subject();
-        model.addAttribute("diploma", newSubject);
-        return "diploma";
+        model.addAttribute("subject", newSubject);
+        return "subject";
     }
-    @RequestMapping (value = "/addDiploma.html", method = RequestMethod.POST )
-    public String addDiploma(@ModelAttribute("diploma") Subject subject){
-        System.out.println(subject.getDiplomaName());
-        return "redirect:diploma";
+    @RequestMapping (value = "/addSubject.html", method = RequestMethod.POST )
+    public String addSubject(@ModelAttribute("subject") Subject subject){
+        System.out.println(subject.getSubjectName());
+        return "redirect:subject";
 
     }
 }

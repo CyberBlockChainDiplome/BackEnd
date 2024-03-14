@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/diplomas")
+@RequestMapping("/subjects")
 public class SubjectRESTController {
 
     private SubjectRepository subjectRepository;
@@ -30,14 +30,14 @@ public class SubjectRESTController {
 
     @RequestMapping(method = RequestMethod.GET/*, produces = "application/xml"*/)
     //@GetMapping
-    public List<Subject> findAllDiplomas() { return subjectRepository.findAll();
+    public List<Subject> findAllSubjects() { return subjectRepository.findAll();
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Subject> getDiploma (@PathVariable("id") long id) {
+    public ResponseEntity<Subject> getSubject (@PathVariable("id") long id) {
         Subject subject = subjectRepository.findById(id);
         if (subject == null) {
-            System.out.println("Diploma not found!");
+            System.out.println("Subject not found!");
             return new ResponseEntity<Subject>(subject,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Subject>(subject,HttpStatus.FOUND);
@@ -45,17 +45,17 @@ public class SubjectRESTController {
 
     @RequestMapping(method = RequestMethod.POST)
     //@PostMapping
-    public ResponseEntity<Subject> addDiploma(@RequestBody Subject subject) {
+    public ResponseEntity<Subject> addSubject(@RequestBody Subject subject) {
         subjectRepository.save(subject);
         return new ResponseEntity<Subject>(subject, HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     //@DeleteMapping("/{id}")
-    public ResponseEntity<Subject> deleteDiploma (@PathVariable("id") long id) {
+    public ResponseEntity<Subject> deleteSubject (@PathVariable("id") long id) {
         Subject subject = subjectRepository.findById(id);
         if (subject == null) {
-            System.out.println("Diploma not found!");
+            System.out.println("Subject not found!");
             return new ResponseEntity<Subject>(HttpStatus.NOT_FOUND);
         }
         subjectRepository.deleteById(id);
@@ -63,7 +63,7 @@ public class SubjectRESTController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity<Subject> deleteDiplomas(/*@RequestBody Diploma diploma*/) {
+    public ResponseEntity<Subject> deleteSubjects(/*@RequestBody Subject subject*/) {
         subjectRepository.deleteAll();
         return new ResponseEntity<Subject>(HttpStatus.NO_CONTENT);
     }
@@ -71,7 +71,7 @@ public class SubjectRESTController {
 
     @RequestMapping(value="/{id}", method = RequestMethod.PUT)
     //@PutMapping("/{id}")
-    public ResponseEntity<Subject> updateDiploma(@RequestBody Subject subject, @PathVariable("id") long id) {
+    public ResponseEntity<Subject> updateSubject(@RequestBody Subject subject, @PathVariable("id") long id) {
 
         Transmitter transmitter = transmitterRepository.findById(subject.getTransmitter().getId());
         subject.setId(id);
@@ -80,7 +80,7 @@ public class SubjectRESTController {
         return new ResponseEntity<Subject>(subject,HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Subject> updateAllDiplomas(@RequestBody List<Subject> updates) {
+    public ResponseEntity<Subject> updateAllSubjects(@RequestBody List<Subject> updates) {
         subjectRepository.deleteAll();
         for(Subject s : updates){
             subjectRepository.save(s);
@@ -89,10 +89,10 @@ public class SubjectRESTController {
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.PATCH)
-    public ResponseEntity<Subject> updatePartOfDiploma(@RequestBody Map<String, Object> updates, @PathVariable("id") long id) {
+    public ResponseEntity<Subject> updatePartOfSubject(@RequestBody Map<String, Object> updates, @PathVariable("id") long id) {
         Subject subject = subjectRepository.findById(id);
         if (subject == null) {
-            System.out.println("Diploma not found!");
+            System.out.println("Subject not found!");
             return new ResponseEntity<Subject>(HttpStatus.NOT_FOUND);
         }
         partialUpdate(subject,updates);
@@ -102,8 +102,8 @@ public class SubjectRESTController {
     }
 
     private void partialUpdate(Subject subject, Map<String, Object> updates) {
-        if (updates.containsKey("diplomaName")) {
-            subject.setDiplomaName((String) updates.get("diplomaName"));
+        if (updates.containsKey("subjectName")) {
+            subject.setSubjectName((String) updates.get("subjectName"));
         }
         if (updates.containsKey("transmitter")) {
             Map<String, Object> transmitterUpdates = (Map<String, Object>) updates.get("transmitter");

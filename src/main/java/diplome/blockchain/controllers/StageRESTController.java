@@ -74,10 +74,10 @@ public class StageRESTController {
     //@PutMapping("/{id}")
     public ResponseEntity<Stage> updateStage(@RequestBody Stage stage, @PathVariable("id") long id) {
         Receiver receiver = receiverRepository.findById(stage.getReceiver().getId());
-        Subject subject = subjectRepository.findById(stage.getDiploma().getId()).orElse(null);
+        Subject subject = subjectRepository.findById(stage.getSubject().getId()).orElse(null);
         stage.setId(id);
         stage.setReceiver(receiver);
-        stage.setDiploma(subject);
+        stage.setSubject(subject);
         subjectRepository.save(subject);
         return new ResponseEntity<Stage>(stage,HttpStatus.OK);
     }

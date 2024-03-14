@@ -15,11 +15,11 @@ public class Stage {
     @ManyToOne
     private Receiver receiver;
 
-    public Subject getDiploma() {
+    public Subject getSubject() {
         return subject;
     }
 
-    public void setDiploma(Subject subject) {
+    public void setSubject(Subject subject) {
         this.subject = subject;
     }
 
