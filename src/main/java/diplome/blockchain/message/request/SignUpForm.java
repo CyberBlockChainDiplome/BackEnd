@@ -41,11 +41,11 @@ public class SignUpForm {
         this.username = username;
     }
 
-    public List<Subject> getDiploma() {
+    public List<Subject> getSubject() {
         return subject;
     }
 
-    public void setDiploma(List<Subject> subject) {
+    public void setSubject(List<Subject> subject) {
         this.subject = subject;
     }
 
