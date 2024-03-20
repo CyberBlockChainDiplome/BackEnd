@@ -1,5 +1,6 @@
 package diplome.blockchain.controllers;
 import diplome.blockchain.model.Subject;
+import diplome.blockchain.model.Transmitter;
 import diplome.blockchain.repository.ReceiverRepository;
 import diplome.blockchain.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import diplome.blockchain.model.Stage;
 import diplome.blockchain.model.Receiver;
 import diplome.blockchain.repository.StageRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
